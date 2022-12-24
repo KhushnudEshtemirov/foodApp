@@ -1,11 +1,12 @@
 import React from "react";
 import { connect } from "react-redux";
 
+import { selectCartTotalPrice } from "../../redux/cart/cart.selectors";
 import OrderItems from "../order-items/order-items";
 
 import "./home-right.scss";
 
-const HomeRight = ({ cartItems }) => {
+const HomeRight = ({ totalPrice }) => {
   return (
     <div className="home-right-body">
       <div className="right-top">
@@ -32,13 +33,7 @@ const HomeRight = ({ cartItems }) => {
         </div>
         <div>
           <p>Sub total</p>
-          <h5>
-            {cartItems.reduce(
-              (accumulator, currentValue) =>
-                accumulator + currentValue.cost * currentValue.quantity,
-              0
-            )}
-          </h5>
+          <h5>{totalPrice}</h5>
         </div>
         <div>
           <button>Continue to Payment</button>
@@ -48,8 +43,8 @@ const HomeRight = ({ cartItems }) => {
   );
 };
 
-const mapStateToProps = ({ cart: { cartItems } }) => ({
-  cartItems,
+const mapStateToProps = (state) => ({
+  totalPrice: selectCartTotalPrice(state),
 });
 
 export default connect(mapStateToProps)(HomeRight);

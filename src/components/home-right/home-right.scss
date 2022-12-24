@@ -66,6 +66,17 @@
     padding: 20px;
     overflow-y: auto;
 
+    .empty-cart {
+      margin-top: 80px;
+      display: flex;
+      justify-content: center;
+
+      h2 {
+        color: #fff;
+        font-weight: 500;
+      }
+    }
+
     .order-item {
       display: flex;
       flex-direction: column;
