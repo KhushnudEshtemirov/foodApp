@@ -11,42 +11,40 @@ import { IoLogOutOutline } from "react-icons/io5";
 
 import "./leftside.scss";
 
-const LeftSide = () => {
-  return (
-    <div className="left-side">
-      <ul>
-        <li>
-          <Link to="/home">
-            <img src={homeicon} alt="home-icon" />
-          </Link>
-        </li>
-        <CustomLink to="/home">
-          <SlHome />
-        </CustomLink>
-        <CustomLink to="/discount">
-          <CiDiscount1 />
-        </CustomLink>
-        <CustomLink to="/order">
-          <AiOutlinePieChart />
-        </CustomLink>
-        <CustomLink to="/store">
-          <CgShoppingBag />
-        </CustomLink>
-        <CustomLink to="/notification">
-          <HiOutlineBell />
-        </CustomLink>
-        <CustomLink to="/setting">
-          <CiSettings />
-        </CustomLink>
-        <li>
-          <Link to="/">
-            <IoLogOutOutline />
-          </Link>
-        </li>
-      </ul>
-    </div>
-  );
-};
+const LeftSide = () => (
+  <div className="left-side">
+    <ul>
+      <li>
+        <Link to="/home">
+          <img src={homeicon} alt="home-icon" />
+        </Link>
+      </li>
+      <CustomLink to="/home">
+        <SlHome />
+      </CustomLink>
+      <CustomLink to="/discount">
+        <CiDiscount1 />
+      </CustomLink>
+      <CustomLink to="/order">
+        <AiOutlinePieChart />
+      </CustomLink>
+      <CustomLink to="/store">
+        <CgShoppingBag />
+      </CustomLink>
+      <CustomLink to="/notification">
+        <HiOutlineBell />
+      </CustomLink>
+      <CustomLink to="/setting">
+        <CiSettings />
+      </CustomLink>
+      <li>
+        <Link to="/">
+          <IoLogOutOutline />
+        </Link>
+      </li>
+    </ul>
+  </div>
+);
 
 const CustomLink = ({ to, children, ...props }) => {
   const resolvedPath = useResolvedPath(to);

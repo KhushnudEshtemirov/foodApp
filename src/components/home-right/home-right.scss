@@ -1,19 +1,20 @@
 .home-right-body {
   position: relative;
-  background: #1F1D2B;
+  background: #1f1d2b;
 
   .right-top {
     width: 33%;
     position: fixed;
     top: 0;
     padding: 25px 20px;
-    background: #1F1D2B;
+    background: #1f1d2b;
     z-index: 999;
 
-    hr { 
-      display: block; 
+    hr {
+      display: block;
       height: 1px;
-      border: 0; border-top: 1px solid #393C49;
+      border: 0;
+      border-top: 1px solid #393c49;
     }
 
     h4 {
@@ -30,14 +31,14 @@
         border-radius: 8px;
         border: none;
         margin-right: 8px;
-        background: #1F1D2B;
-        border: 1px solid #393C49;
-        color: #EA7C69;
+        background: #1f1d2b;
+        border: 1px solid #393c49;
+        color: #ea7c69;
         font-weight: 500;
         cursor: pointer;
 
         &.active {
-          background: #EA7C69;
+          background: #ea7c69;
           color: #fff;
         }
       }
@@ -87,7 +88,7 @@
               }
 
               span {
-                color: #ABBBC2;
+                color: #abbbc2;
                 font-size: 0.9rem;
               }
             }
@@ -97,7 +98,6 @@
             }
 
             &:last-child {
-
               p {
                 color: #fff;
               }
@@ -119,8 +119,8 @@
             text-align: center;
             font-size: 16px;
             outline: none;
-            background: #2D303E;
-            border: 1px solid #393C49;
+            background: #2d303e;
+            border: 1px solid #393c49;
             border-radius: 8px;
             color: #fff;
             padding: 0 5px;
@@ -135,15 +135,15 @@
         .order-node {
           width: 100%;
           margin-top: 10px;
-          
+
           input {
             width: 100%;
-            background: #2D303E;
-            border: 1px solid #393C49;
+            background: #2d303e;
+            border: 1px solid #393c49;
             border-radius: 8px;
             padding: 12px 10px;
             outline: none;
-            color: #E0E6E9;
+            color: #e0e6e9;
           }
         }
 
@@ -156,12 +156,13 @@
             height: 46px;
             margin-left: 15px;
             margin-top: 8px;
-            border: 1px solid #FF7CA3;
+            border: 1px solid #ff7ca3;
             border-radius: 8px;
+            cursor: pointer;
 
             svg {
               font-size: 1.3rem;
-              color: #FF7CA3;
+              color: #ff7ca3;
             }
           }
         }
@@ -172,7 +173,7 @@
   .right-bottom {
     width: 32.5%;
     position: fixed;
-    background: #1F1D2B;
+    background: #1f1d2b;
     z-index: 999;
     bottom: 0;
     padding: 25px 20px;
@@ -186,7 +187,7 @@
       }
 
       p {
-        color: #ABBBC2;
+        color: #abbbc2;
       }
 
       h5 {
@@ -197,7 +198,7 @@
 
       button {
         width: 100%;
-        background: #EA7C69;
+        background: #ea7c69;
         box-shadow: 0px 8px 24px rgba(234, 124, 105, 0.3);
         border-radius: 8px;
         padding: 14px 0;

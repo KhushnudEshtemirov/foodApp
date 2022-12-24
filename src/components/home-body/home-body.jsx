@@ -1,11 +1,14 @@
 import React, { useState } from "react";
+import { connect } from "react-redux";
+
+import { addItem } from "../../redux/cart/cart.actions";
 
 import "./home-body.scss";
 import { FiSearch, FiChevronDown } from "react-icons/fi";
 
 import { dishes_data } from "./dishes.data";
 
-const HomeBody = () => {
+const HomeBody = ({ addItem }) => {
   let [search, setSearch] = useState("");
   let [dishType, setDishType] = useState("hot");
 
@@ -121,7 +124,11 @@ const HomeBody = () => {
             {filteredData
               .filter((dishes) => dishes[dishType])
               .map((dishes) => (
-                <div className="dishes-item" key={dishes.id}>
+                <div
+                  className="dishes-item"
+                  onClick={() => addItem(dishes)}
+                  key={dishes.id}
+                >
                   <div className="image-container">
                     <img src={dishes.imgUrl} alt="dish1" />
                   </div>
@@ -139,4 +146,8 @@ const HomeBody = () => {
   );
 };
 
-export default HomeBody;
+const mapDispatchToProps = (dispatch) => ({
+  addItem: (item) => dispatch(addItem(item)),
+});
+
+export default connect(null, mapDispatchToProps)(HomeBody);
