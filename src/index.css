@@ -1,1 +1,23 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Barlow;
+}
 
+::-webkit-scrollbar {
+  width: 0;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background: rgb(98, 98, 108);
+}
+
+::-webkit-scrollbar-track {
+  background: #252836;
+}
+
+ul {
+  list-style: none;
+}
