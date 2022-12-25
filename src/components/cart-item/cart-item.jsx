@@ -6,7 +6,7 @@ import { removeItem } from "../../redux/cart/cart.actions";
 import { AiOutlineDelete } from "react-icons/ai";
 
 const CartItem = ({ item, clearItem }) => {
-  const { imgUrl, cost, name, quantity } = item;
+  let { imgUrl, cost, name, quantity } = item;
 
   return (
     <div className="order-item">

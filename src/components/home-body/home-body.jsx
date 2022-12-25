@@ -11,6 +11,7 @@ import { dishes_data } from "./dishes.data";
 const HomeBody = ({ addItem }) => {
   let [search, setSearch] = useState("");
   let [dishType, setDishType] = useState("hot");
+  let [show, setShow] = useState(false);
 
   let filteredData = dishes_data.filter((data) =>
     data.name.toLowerCase().includes(search.toLowerCase())
@@ -115,9 +116,13 @@ const HomeBody = ({ addItem }) => {
         <div className="dishes-body">
           <div className="dishes-top">
             <h3>Choose Dishes</h3>
-            <div>
-              <FiChevronDown />
-              <span>Dine in</span>
+            <div onClick={() => setShow(!show)}>
+              <FiChevronDown className={`${show ? "rotate" : ""}`} />
+              <span className="active-select">Dine in</span>
+              <div className={`order-type ${show ? "show" : ""}`}>
+                <span>To Go</span>
+                <span>Delivery</span>
+              </div>
             </div>
           </div>
           <div className="dishes-items">

@@ -86,7 +86,8 @@
           font-weight: 500;
         }
 
-        div {
+        & > div {
+          position: relative;
           width: 100px;
           height: 40px;
           display: flex;
@@ -96,10 +97,43 @@
           border: 1px solid #393C49;
           border-radius: 8px;
           color: #fff;
+          padding-right: 6px;
           cursor: pointer;
+
+          svg{
+            transition: 0.3s;
+            
+            &.rotate{
+              transform: rotate(180deg);
+            }
+          }
 
           span {
             font-size: 0.9rem;
+            user-select: none;
+          }
+
+          .order-type {
+            position: absolute;
+            top: 42px;
+            left: 6px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            background: #1F1D2B;
+            border: 1px solid #393C49;
+            border-radius: 8px;
+            padding: 10px 20px;
+            z-index: -99;
+            opacity: 0;
+            transform: translateY(-100%);
+            transition: 0.3s ease-in-out;
+
+            &.show {
+              transform: translateY(0);
+              opacity: 1;
+              z-index: 99;
+            }
           }
         }
       }

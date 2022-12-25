@@ -1,0 +1,161 @@
+.payment {
+  width: 32%;
+  height: 100vh;
+  position: fixed;
+  padding: 15px 20px;
+  top: 0;
+  right: 5px;
+  background: #1F1D2B;
+  border-radius: 16px 16px 0px 16px;
+  z-index: 9999;
+  transition: 0.5s;
+
+  div > h2 {
+    color: #fff;
+    font-weight: 500;
+  }
+
+  div > p {
+    margin: 10px 0 20px 0;
+    color: #ABBBC2;
+  }
+
+  hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #393c49;
+  }
+
+  .payment-body {
+    margin-top: 16px;
+
+    h3 {
+      color: #fff;
+      font-weight: 500;
+    }
+
+    .methods {
+      margin: 16px 0;
+      display: flex;
+      gap: 10px;
+
+      .method {
+        width: 100px;
+        height: 62px;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        align-items: center;
+        justify-content: center;
+        background: #1F1D2B;
+        border: 1px solid #393C49;
+        border-radius: 8px;
+        cursor: pointer;
+
+        &.active {
+          background: #252836;
+          border: 1px solid #ABBBC2;
+
+          & > * {
+            color: #fff;
+          }
+        }
+
+        svg {
+          color: #ABBBC2;
+          font-size: 1.4rem;
+        }
+
+        span {
+          color: #ABBBC2;
+          font-size: 0.8rem;
+        }
+      }
+    }
+
+    .full-name,
+    .card-number,
+    .card-data,
+    .order-detail {
+      display: flex;
+      flex-direction: column;
+
+      label {
+        color: #fff;
+        margin-bottom: 8px;
+      }
+
+      input {
+        background: #2D303E;
+        border: 1px solid #393C49;
+        border-radius: 8px;
+        padding: 12px 10px;
+        color: #E0E6E9;
+        outline: none;
+      }
+    }
+
+    .card-number {
+      margin-top: 16px;
+    }
+
+    .card-data {
+      margin-top: 16px;
+      flex-direction: row;
+      display: flex;
+      gap: 20px;
+
+      div {
+        display: flex;
+        flex-direction: column;
+      }
+
+      div input {
+        margin-top: 8px;
+        margin-bottom: 10px;
+      }
+    }
+
+    .order-detail {
+      flex-direction: row;
+      margin-top: 16px;
+      gap: 20px;
+
+      div {
+        display: flex;
+        flex-direction: column;
+      }
+
+      div input {
+        margin-top: 8px;
+      }
+    }
+
+    .submit-btns {
+      margin-top: 30px;
+      display: flex;
+      gap: 10px;
+
+      button {
+        border-radius: 8px;
+        cursor: pointer;
+        width: 50%;
+        padding: 12px 10px;
+
+        &:first-child {
+          border: 1px solid #EA7C69;
+          color: #EA7C69;
+          background: transparent;
+        }
+
+        &:last-child {
+          background: #EA7C69;
+          box-shadow: 0px 8px 24px rgba(234, 124, 105, 0.4);
+          color: #fff;
+          border: none;
+        }
+      }
+    }
+  }
+}

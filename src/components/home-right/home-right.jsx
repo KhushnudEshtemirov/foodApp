@@ -1,14 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
 
 import { selectCartTotalPrice } from "../../redux/cart/cart.selectors";
 import OrderItems from "../order-items/order-items";
+import Payment from "../payment/payment";
 
 import "./home-right.scss";
 
 const HomeRight = ({ totalPrice }) => {
+  let [showPayment, setPayment] = useState(false);
+
   return (
     <div className="home-right-body">
+      <div
+        className={`black-window ${showPayment ? "show-modal" : ""}`}
+        onClick={() => setPayment(false)}
+      ></div>
       <div className="right-top">
         <h4>Orders #34562</h4>
         <div className="order-btn">
@@ -36,8 +43,13 @@ const HomeRight = ({ totalPrice }) => {
           <h5>{totalPrice}</h5>
         </div>
         <div>
-          <button>Continue to Payment</button>
+          <button onClick={() => setPayment(!showPayment)}>
+            Continue to Payment
+          </button>
         </div>
+      </div>
+      <div className={`payment ${showPayment ? "show" : ""}`}>
+        <Payment />
       </div>
     </div>
   );
