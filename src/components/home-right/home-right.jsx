@@ -36,11 +36,11 @@ const HomeRight = ({ totalPrice }) => {
       <div className="right-bottom">
         <div>
           <p>Discount</p>
-          <h5>$0</h5>
+          <h5>$ 0</h5>
         </div>
         <div>
           <p>Sub total</p>
-          <h5>{totalPrice}</h5>
+          <h5>$ {totalPrice}</h5>
         </div>
         <div>
           <button onClick={() => setPayment(!showPayment)}>
