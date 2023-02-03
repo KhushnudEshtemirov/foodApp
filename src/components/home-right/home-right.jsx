@@ -10,6 +10,10 @@ import "./home-right.scss";
 const HomeRight = ({ totalPrice }) => {
   let [showPayment, setPayment] = useState(false);
 
+  const showPaymentFunc = () => {
+    setPayment(!showPayment);
+  };
+
   return (
     <div className="home-right-body">
       <div
@@ -43,13 +47,11 @@ const HomeRight = ({ totalPrice }) => {
           <h5>$ {totalPrice}</h5>
         </div>
         <div>
-          <button onClick={() => setPayment(!showPayment)}>
-            Continue to Payment
-          </button>
+          <button onClick={showPaymentFunc}>Continue to Payment</button>
         </div>
       </div>
       <div className={`payment ${showPayment ? "show" : ""}`}>
-        <Payment />
+        <Payment showPaymentFunc={showPaymentFunc} />
       </div>
     </div>
   );
