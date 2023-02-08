@@ -1,18 +1,23 @@
 import React, { useState } from "react";
-import { connect } from "react-redux";
+import { useSelector } from "react-redux";
 
-import { selectCartTotalPrice } from "../../redux/cart/cart.selectors";
 import OrderItems from "../order-items/order-items";
 import Payment from "../payment/payment";
 
 import "./home-right.scss";
 
-const HomeRight = ({ totalPrice }) => {
+const HomeRight = () => {
+  const { foodItems } = useSelector((state) => state.food);
   let [showPayment, setPayment] = useState(false);
 
   const showPaymentFunc = () => {
     setPayment(!showPayment);
   };
+
+  const totalPrice = foodItems.reduce(
+    (totalSum, current) => totalSum + current.quantity * current.cost,
+    0
+  );
 
   return (
     <div className="home-right-body">
@@ -57,8 +62,4 @@ const HomeRight = ({ totalPrice }) => {
   );
 };
 
-const mapStateToProps = (state) => ({
-  totalPrice: selectCartTotalPrice(state),
-});
-
-export default connect(mapStateToProps)(HomeRight);
+export default HomeRight;

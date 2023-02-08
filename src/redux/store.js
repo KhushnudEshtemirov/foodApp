@@ -1,10 +1,11 @@
-import { createStore, applyMiddleware } from "redux";
-import logger from "redux-logger";
+import { configureStore } from "@reduxjs/toolkit";
 
-import rootReducer from "./root-reducer";
+import foodReducer from "./food/foodSlice";
 
-const middlewares = [logger];
-
-const store = createStore(rootReducer, applyMiddleware(...middlewares));
+const store = configureStore({
+  reducer: {
+    food: foodReducer,
+  },
+});
 
 export default store;

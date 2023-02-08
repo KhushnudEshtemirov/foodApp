@@ -1,14 +1,16 @@
 import React, { useState } from "react";
-import { connect } from "react-redux";
-
-import { addItem } from "../../redux/cart/cart.actions";
+import { useDispatch, useSelector } from "react-redux";
 
 import "./home-body.scss";
 import { FiSearch, FiChevronDown } from "react-icons/fi";
 
 import { dishes_data } from "./dishes.data";
+import { addFood } from "../../redux/food/foodSlice";
 
-const HomeBody = ({ addItem }) => {
+const HomeBody = () => {
+  const dispatch = useDispatch();
+  const { foodItems } = useSelector((state) => state.food);
+
   let [search, setSearch] = useState("");
   let [show, setShow] = useState(false);
   const [active, setActive] = useState("hot");
@@ -24,6 +26,18 @@ const HomeBody = ({ addItem }) => {
   let filteredData = dishes_data.filter((data) =>
     data.name.toLowerCase().includes(search.toLowerCase())
   );
+
+  const addFoodItem = (food) => {
+    const isExist = foodItems.find((item) => item.id === food.id);
+
+    if (isExist) {
+      return foodItems.map((item) =>
+        item.id === food.id ? { ...item, quantity: item.quantity + 1 } : item
+      );
+    }
+
+    return [...foodItems, { ...food, quantity: 1 }];
+  };
 
   return (
     <div className="home-body">
@@ -71,19 +85,19 @@ const HomeBody = ({ addItem }) => {
           <div className="dishes-items">
             {filteredData
               .filter((dishes) => dishes[active])
-              .map((dishes) => (
+              .map((dish) => (
                 <div
                   className="dishes-item"
-                  onClick={() => addItem(dishes)}
-                  key={dishes.id}
+                  onClick={() => dispatch(addFood(addFoodItem(dish)))}
+                  key={dish.id}
                 >
                   <div className="image-container">
-                    <img src={dishes.imgUrl} alt="dish1" />
+                    <img src={dish.imgUrl} alt="dish1" />
                   </div>
                   <div className="dish-information">
-                    <h5>{dishes.name}</h5>
-                    <p>$ {dishes.cost}</p>
-                    <span>{dishes.number} Bowls available</span>
+                    <h5>{dish.name}</h5>
+                    <p>$ {dish.cost}</p>
+                    <span>{dish.number} Bowls available</span>
                   </div>
                 </div>
               ))}
@@ -94,8 +108,4 @@ const HomeBody = ({ addItem }) => {
   );
 };
 
-const mapDispatchToProps = (dispatch) => ({
-  addItem: (item) => dispatch(addItem(item)),
-});
-
-export default connect(null, mapDispatchToProps)(HomeBody);
+export default HomeBody;

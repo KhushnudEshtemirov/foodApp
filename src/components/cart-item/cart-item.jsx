@@ -1,11 +1,12 @@
 import React from "react";
-import { connect } from "react-redux";
+import { useDispatch } from "react-redux";
 
-import { removeItem } from "../../redux/cart/cart.actions";
+import { removeFood } from "../../redux/food/foodSlice";
 
 import { AiOutlineDelete } from "react-icons/ai";
 
-const CartItem = ({ item, clearItem }) => {
+const CartItem = ({ item }) => {
+  const dispatch = useDispatch();
   let { imgUrl, cost, name, quantity } = item;
 
   return (
@@ -35,7 +36,7 @@ const CartItem = ({ item, clearItem }) => {
         <div className="order-node">
           <input type="text" placeholder="Order Note..." />
         </div>
-        <div onClick={() => clearItem(item)}>
+        <div onClick={() => dispatch(removeFood(item.id))}>
           <AiOutlineDelete />
         </div>
       </div>
@@ -43,8 +44,4 @@ const CartItem = ({ item, clearItem }) => {
   );
 };
 
-const mapDispatchToProps = (dispatch) => ({
-  clearItem: (item) => dispatch(removeItem(item)),
-});
-
-export default connect(null, mapDispatchToProps)(CartItem);
+export default CartItem;
