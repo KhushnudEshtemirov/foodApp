@@ -10,26 +10,20 @@ import { dishes_data } from "./dishes.data";
 
 const HomeBody = ({ addItem }) => {
   let [search, setSearch] = useState("");
-  let [dishType, setDishType] = useState("hot");
   let [show, setShow] = useState(false);
+  const [active, setActive] = useState("hot");
+  const menu = [
+    { id: 1, name: "Hot Dishes", type: "hot" },
+    { id: 2, name: "Cold Dishes", type: "cold" },
+    { id: 3, name: "Soup", type: "soup" },
+    { id: 4, name: "Grill", type: "grill" },
+    { id: 5, name: "Appetizer", type: "appetizer" },
+    { id: 6, name: "Dessert", type: "dessert" },
+  ];
 
   let filteredData = dishes_data.filter((data) =>
     data.name.toLowerCase().includes(search.toLowerCase())
   );
-
-  let itemMenu = document.getElementsByClassName("item-menu");
-  let len = itemMenu.length;
-
-  function setActive(item) {
-    for (let i = 0; i < len; i++) {
-      if (parseInt(item.id) === i + 1) {
-        itemMenu[i].classList.add("active");
-      } else {
-        if (itemMenu[i].classList.contains("active"))
-          itemMenu[i].classList.remove("active");
-      }
-    }
-  }
 
   return (
     <div className="home-body">
@@ -50,66 +44,15 @@ const HomeBody = ({ addItem }) => {
       <div className="dishes">
         <div className="dishes-menu">
           <ul>
-            <li
-              id="1"
-              className="item-menu active"
-              onClick={(e) => {
-                setDishType("hot");
-                setActive(e.target);
-              }}
-            >
-              Hot Dishes
-            </li>
-            <li
-              id="2"
-              className="item-menu"
-              onClick={(e) => {
-                setDishType("cold");
-                setActive(e.target);
-              }}
-            >
-              Cold Dishes
-            </li>
-            <li
-              id="3"
-              className="item-menu"
-              onClick={(e) => {
-                setDishType("soup");
-                setActive(e.target);
-              }}
-            >
-              Soup
-            </li>
-            <li
-              id="4"
-              className="item-menu"
-              onClick={(e) => {
-                setDishType("grill");
-                setActive(e.target);
-              }}
-            >
-              Grill
-            </li>
-            <li
-              id="5"
-              className="item-menu"
-              onClick={(e) => {
-                setDishType("appetizer");
-                setActive(e.target);
-              }}
-            >
-              Appetizer
-            </li>
-            <li
-              id="6"
-              className="item-menu"
-              onClick={(e) => {
-                setDishType("dessert");
-                setActive(e.target);
-              }}
-            >
-              Dessert
-            </li>
+            {menu.map((el) => (
+              <li
+                key={el.id}
+                className={`item-menu ${active === el.type ? "active" : ""}`}
+                onClick={() => setActive(el.type)}
+              >
+                {el.name}
+              </li>
+            ))}
           </ul>
           <hr />
         </div>
@@ -127,7 +70,7 @@ const HomeBody = ({ addItem }) => {
           </div>
           <div className="dishes-items">
             {filteredData
-              .filter((dishes) => dishes[dishType])
+              .filter((dishes) => dishes[active])
               .map((dishes) => (
                 <div
                   className="dishes-item"
